@@ -1,9 +1,14 @@
 // import React, { Component } from 'react';
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import css from './ContactListItem.module.css';
+import { useDispatch } from 'react-redux';
+import { deleteContact } from 'features/contactsSlice';
 
-function ContactListItem({ contact, deleteContact, toCapitalize }) {
+function ContactListItem({ contact, toCapitalize }) {
+
+  const dispatch = useDispatch();
+  
   return (
     <li className={css.contact}>
       <span className={css.contactItemSpan}>
@@ -11,7 +16,7 @@ function ContactListItem({ contact, deleteContact, toCapitalize }) {
       </span>
       <button
         className={css.contactItemButton}
-        onClick={() => deleteContact(contact.id)}
+        onClick={() => dispatch(deleteContact(contact.id))}
       >
         Delete
       </button>
@@ -19,13 +24,14 @@ function ContactListItem({ contact, deleteContact, toCapitalize }) {
   );
 }
 
-ContactListItem.propTypes = {
-    contact: PropTypes.object.isRequired,
-    toCapitalize: PropTypes.func.isRequired,
-    deleteContact: PropTypes.func.isRequired,
-  };
-
 export default ContactListItem;
+
+// ContactListItem.propTypes = {
+//     contact: PropTypes.object.isRequired,
+//     toCapitalize: PropTypes.func.isRequired,
+//     deleteContact: PropTypes.func.isRequired,
+//   };
+
 
 // export class ContactListItem extends Component {
 //   static propTypes = {

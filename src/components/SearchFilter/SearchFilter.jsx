@@ -2,12 +2,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import css from './SearchFilter.module.css';
+import { setFilter } from 'features/filterSlice';
+import { useSelector, useDispatch } from 'react-redux';
 
-function SearchFilter({ filter, toFilter }) {
-
+function SearchFilter() {
+  const filter = useSelector((state) => state.filter.filterValue);
+  const dispatch = useDispatch()
+  
   const handleChange = e => {
     const { value } = e.target;
-    toFilter(value);
+    dispatch(setFilter(value));
   };
   
   return (
@@ -27,12 +31,13 @@ function SearchFilter({ filter, toFilter }) {
   );
 }
 
-SearchFilter.propTypes = {
-  toFilter: PropTypes.func.isRequired,
-  filter: PropTypes.string.isRequired,
-};
-
 export default SearchFilter;
+
+// SearchFilter.propTypes = {
+//   toFilter: PropTypes.func.isRequired,
+//   filter: PropTypes.string.isRequired,
+// };
+
 
 // export class SearchFilter extends Component {
 //   static propTypes = {

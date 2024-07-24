@@ -1,6 +1,6 @@
 // import React, { Component } from 'react';
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import css from './SearchFilter.module.css';
 import { setFilter } from 'features/filterSlice';
 import { useSelector, useDispatch } from 'react-redux';
